@@ -14,10 +14,12 @@ public class BruteForce {
 
         ArrayList<Polynomial> polynomials = new ArrayList<>();
 
-        p.set(0, 275);
-        p.set(1, 97);
+        Polynomial q = new Polynomial(p);
 
-        System.out.println(Arrays.stream(triples).anyMatch(triple -> gcd(p.substitute(triple.x), N) != 1));
+        q.set(1, 123);
+        System.out.println(q);
+
+        System.out.println(Arrays.stream(triples).anyMatch(triple -> gcd(q.substitute(triple.x), N) != 1));
 
         for (int i = 0; i < N; ++i) {
             p.set(0, i);
@@ -26,7 +28,7 @@ public class BruteForce {
 
                 boolean b = Arrays.stream(triples).anyMatch(triple -> gcd(p.substitute(triple.x), N) != 1);
 
-                if (b) {
+                if (!b) {
                     polynomials.add(new Polynomial(p));
                 }
 
