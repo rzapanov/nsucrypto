@@ -39,16 +39,19 @@ public class Polynomial {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < K - 1; ++i) {
-            builder.append(coeffs[i]);
-            builder.append("*x^");
-            builder.append(i);
-            builder.append(" + ");
+            if (coeffs[i] != 0) {
+                builder.append(coeffs[i]);
+                builder.append("*x^");
+                builder.append(i);
+                builder.append(" + ");
+            }
         }
 
-        builder.append(coeffs[K - 1]);
-        builder.append("*x^");
-        builder.append(K - 1);
-        builder.append(" + ");
+        if (coeffs[K - 1] != 0) {
+            builder.append(coeffs[K - 1]);
+            builder.append("*x^");
+            builder.append(K - 1);
+        }
 
         return builder.toString();
     }
